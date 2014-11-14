@@ -31,8 +31,10 @@
   [coll]
   (rand-nth coll))
 
-(defn square-coord->vertices
-  "TODO: write a docstring and rename to corner."
+(defn corner->vertices
+  "Takes the coordinate of the northwest (top left) corner of the
+  quilt square and returns a map containing the vertices of each of
+  the corners."
   ([coord]
      (let [[x y] coord
            ne [(+ x square-size)
@@ -104,17 +106,15 @@
   "Draws a triangle to a random corner of the square defined by the
   `coord' in the :nw corner.  Optionally accepts an additional
   nonstandard size and corner keyword."
-  ([coord]                              ; TODO: Rewrite to call the
-                                        ; more explicit method with a
-                                        ; random `corner-key'
-     (let [vertices (square-coord->vertices coord)
+  ([coord]
+     (let [vertices (corner->vertices coord)
            corner-key  (rand-nth (keys vertices))
            [x1 y1]  (corner-key vertices)
            [x2 y2] ((first (triangle-lookup-table corner-key)) vertices)
            [x3 y3] ((second (triangle-lookup-table corner-key)) vertices)]
        (triangle x1 y1 x2 y2 x3 y3)))
   ([coord size corner]
-     (let [vertices (square-coord->vertices coord size)
+     (let [vertices (corner->vertices coord size)
            corner-key corner
            [x1 y1]  (corner-key vertices)
            [x2 y2] ((first (triangle-lookup-table corner-key)) vertices)

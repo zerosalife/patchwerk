@@ -1,5 +1,7 @@
 # patchwerk
 
+![](/patchwerk-example.png)
+
 A Quil sketch designed to generate patterns for quilts.
 
 ## Usage
@@ -12,7 +14,7 @@ REPL - run `(require 'patchwerk.core)`.
 
 ## Plan: Toward 1.0.0
 
-Need to port code from other repo and refactor into separate drawing
+Need to refactor the mess in `patchwerk.core` into separate drawing
 functions for increased modularity.  Also need to make sure it works
 with the
 [new functional middleware.](https://github.com/quil/quil/wiki/Functional-mode-(fun-mode))
